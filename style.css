@@ -1,0 +1,55 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+}
+
+aside {
+    max-width: 300px;
+    width: 100%;
+    padding: 2rem;
+    min-height: 100vh;
+    background-color: red;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    position: absolute;
+    top: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+select {
+    padding: 0.7rem;
+    border-radius: 6px;
+    width: 60%;
+    outline: 0;
+}
+
+button[type="button"] {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 0;
+    cursor: pointer;
+}
+
+button[type="button"]:hover {
+    filter: brightness(0.8);
+    transition: filter 0.2s;
+}
+
+
