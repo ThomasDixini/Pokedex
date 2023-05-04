@@ -1,15 +1,14 @@
-
-
 const select = document.getElementById('pokemons-select')
 const buttonSubmit = document.querySelector('button')
 
-function Pokemon(id, title, ability, imgUrl) {
+function Pokemon(id, title, ability, imgUrl, level) {
     return 
     {
         this.id = id, 
         this.title = title, 
-        this.ability = ability 
-        this.imgUrl = imgUrl
+        this.ability = ability,
+        this.imgUrl = imgUrl,
+        this.level = level
     }
 }
 
@@ -21,10 +20,11 @@ function resetCard(){
 }
 
 function createPokemonCard({
-    id = 0,
+    id,
     imgUrl,
     title,
-    ability
+    ability,
+    level
 }) {
     resetCard();
 
@@ -37,7 +37,7 @@ function createPokemonCard({
     <div>
         <span>
             <label for="nivel">Nivel: </label>
-            <button> - 0 + </button>
+            <span> <button >-</button> ${level} <button onclick="increaseLevel(${level})">+</button> </span>
         </span>
         <span>
             <label for="habilidade">Habilidade: </label>
@@ -60,23 +60,21 @@ const searchPokemonOnAPI = async (id) => {
     pokemon.name = data.name
     pokemon.ability = abilityName;
     pokemon.imgUrl = data.sprites.other['official-artwork'].front_default
-    console.log(pokemon)
+    pokemon.level = 0
+    
     createPokemonCard({
         id: pokemon.id,
         title: pokemon.name,
         ability: pokemon.ability,
-        imgUrl: pokemon.imgUrl
+        imgUrl: pokemon.imgUrl,
+        level: pokemon.level
     })
 
 }
 
-
-
-searchPokemonOnAPI(1)
-
 buttonSubmit.addEventListener('click', () => {
     let id = select.options[select.selectedIndex].value
-    
+    searchPokemonOnAPI(id)
 })
 
 
