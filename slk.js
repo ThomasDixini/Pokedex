@@ -33,15 +33,15 @@ function createPokemonCard({
     
     card.innerHTML = `
     <img src='${imgUrl}' alt="">
-    <strong> ${title} </strong>
+    <strong> ${title.toUpperCase()} </strong>
     <div>
         <span>
             <label for="nivel">Nivel: </label>
-            <button> 0 </button>
+            <button> - 0 + </button>
         </span>
         <span>
             <label for="habilidade">Habilidade: </label>
-            <span> ${ability} </span>
+            <span> <b> ${ability} </b> </span>
         </span>
     </div>
     `
@@ -70,9 +70,13 @@ const searchPokemonOnAPI = async (id) => {
 
 }
 
+
+
+searchPokemonOnAPI(1)
+
 buttonSubmit.addEventListener('click', () => {
     let id = select.options[select.selectedIndex].value
-    searchPokemonOnAPI(id)
+    
 })
 
 
